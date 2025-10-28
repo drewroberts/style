@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Chic UI Mockup</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use a Monospace Font for the Terminal Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define the custom font */
+        body {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Define a subtle glow effect for the primary elements */
+        .neon-glow {
+            box-shadow: 0 0 10px rgba(63, 225, 140, 0.4), 0 0 5px rgba(63, 225, 140, 0.2);
+        }
+
+        /* Custom styling for the panel header (font over border) */
+        .panel-header-style {
+            position: absolute;
+            top: -0.75rem; /* Adjust to sit over the border */
+            left: 1rem;
+            padding: 0 0.5rem;
+            background-color: #0d1e21; /* Custom dark background */
+            line-height: 1;
+        }
+    </style>
+    <script>
+        // JIT Configuration for Custom Colors (Based on analyzing the screenshots)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        't-bg': '#0D1E21',     /* Terminal Background (Very dark teal/forest) */
+                        't-primary': '#3FE18C', /* Primary Neon Green */
+                        't-border': '#1A3F47',  /* Darker border color */
+                        't-text-subtle': '#577B84', /* Subtler gray text/lines */
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-t-bg min-h-screen text-gray-200 antialiased p-6">
+
+    <!-- Status Bar Component (Top of the screen) -->
+    <header class="flex justify-between items-center text-xs px-4 py-2 bg-t-bg border border-t-border rounded-md mb-6 neon-glow">
+        <div class="flex items-center space-x-4">
+            <span class="text-t-primary">USER@SYSTEM ~ $</span>
+            <span class="text-t-text-subtle">CWD: /home/project/src</span>
+        </div>
+        <div class="flex items-center space-x-2">
+            <div class="w-2 h-2 rounded-full bg-t-primary animate-pulse"></div>
+            <span class="text-t-primary">STATUS: ACTIVE</span>
+            <span class="text-t-text-subtle">TUE 05:57</span>
+        </div>
+    </header>
+
+    <main class="grid grid-cols-1 md:grid-cols-3 gap-6 h-[calc(100vh-120px)]">
+
+        <!-- Left Sidebar / File Tree -->
+        <div class="col-span-1 space-y-6">
+
+            <!-- Panel 1: File Tree with Text Over Border -->
+            <div class="relative p-4 border-2 border-t-border rounded-lg bg-t-bg h-1/2">
+                <h3 class="panel-header-style text-t-primary text-sm font-medium uppercase tracking-wider">
+                    -Files-
+                </h3>
+                <div class="space-y-1 pt-2">
+                    <p class="text-sm text-white bg-t-primary/20 p-1 -mx-2 rounded-sm border-l-2 border-t-primary cursor-pointer transition">
+                        <span class="text-t-primary pr-2">»</span> index.html
+                    </p>
+                    <p class="text-sm text-gray-200 hover:bg-t-border p-1 -mx-2 rounded-sm cursor-pointer transition">
+                        <span class="text-t-text-subtle pr-2">›</span> package.json
+                    </p>
+                    <p class="text-sm text-gray-200 hover:bg-t-border p-1 -mx-2 rounded-sm cursor-pointer transition">
+                        <span class="text-t-text-subtle pr-2">›</span> src/styles.css
+                    </p>
+                </div>
+                <p class="absolute bottom-1 right-2 text-xs text-t-text-subtle">2/8 files</p>
+            </div>
+
+            <!-- Panel 2: Command Log -->
+            <div class="relative p-4 border-2 border-t-border rounded-lg bg-t-bg h-[calc(50%-1.5rem)]">
+                <h3 class="panel-header-style text-t-primary text-sm font-medium uppercase tracking-wider">
+                    -Command Log-
+                </h3>
+                <div class="space-y-1 pt-2 text-xs overflow-y-auto h-full">
+                    <p class="text-t-primary">
+                        <span class="text-red-400">Error:</span> Dependency 'lodash' not found.
+                    </p>
+                    <p class="text-yellow-400">
+                        <span class="text-t-text-subtle">#</span> Preparing build assets...
+                    </p>
+                    <p class="text-white">
+                        <span class="text-t-primary">PASS:</span> Compilation complete. (0.32s)
+                    </p>
+                    <p class="text-t-text-subtle">
+                        <span class="text-t-primary">»</span> Ready for deployment.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area / Code Editor -->
+        <div class="col-span-1 md:col-span-2">
+             <div class="relative p-6 border-2 border-t-border rounded-lg bg-t-bg h-full neon-glow">
+                <h3 class="panel-header-style text-t-primary text-sm font-medium uppercase tracking-wider">
+                    -Code Editor: index.html-
+                </h3>
+                <pre class="text-sm overflow-auto h-full pt-2">
+                    <code class="text-gray-200">
+                        <span class="text-t-text-subtle">&lt;!DOCTYPE html&gt;</span>
+                        <br><span class="text-t-text-subtle">&lt;html</span> <span class="text-t-primary">lang</span>=<span class="text-yellow-400">"en"</span><span class="text-t-text-subtle">&gt;</span>
+                        <br>
+                        <br>  <span class="text-t-text-subtle">&lt;head&gt;</span>
+                        <br>    <span class="text-cyan-400">&lt;meta</span> <span class="text-t-primary">charset</span>=<span class="text-yellow-400">"UTF-8"</span><span class="text-cyan-400">&gt;</span>
+                        <br>    <span class="text-cyan-400">&lt;title&gt;</span><span class="text-white">Terminal App</span><span class="text-cyan-400">&lt;/title&gt;</span>
+                        <br>  <span class="text-t-text-subtle">&lt;/head&gt;</span>
+                        <br>
+                        <br>  <span class="text-t-text-subtle">&lt;body</span> <span class="text-t-primary">class</span>=<span class="text-yellow-400">"bg-t-bg"</span><span class="text-t-text-subtle">&gt;</span>
+                        <br>    <span class="text-gray-500">&lt;!-- Main application content goes here --&gt;</span>
+                        <br>  <span class="text-t-text-subtle">&lt;/body&gt;</span>
+                        <br><span class="text-t-text-subtle">&lt;/html&gt;</span>
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
