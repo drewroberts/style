@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>W3RD - Blog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=VT323&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#32CD32", // Lime Green
+              background: "#1E1E1E", // Dark Background from request
+              border: "#D2B48C", // Tan color from request
+            },
+            fontFamily: {
+              display: ["VT323", "monospace"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem", // Default rounded corners for all elements
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        body {
+            font-family: 'VT323', monospace;
+            caret-color: #32CD32;
+        }
+        ::selection {
+            background: #32CD32;
+            color: #0A170A;
+        }
+        .blinking-cursor {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+        .material-icons-outlined {
+            font-size: inherit;
+            vertical-align: text-bottom;
+        }
+    </style>
+</head>
+<body class="bg-background text-primary font-display antialiased text-lg">
+<div class="container mx-auto max-w-screen-md p-4">
+<header class="flex justify-between items-center border border-border rounded py-2 px-4 mb-4 relative">
+<span class="absolute -top-3 left-2 bg-background px-1 text-primary">[header]</span>
+<div class="flex items-center space-x-3">
+<span class="text-xl">&gt;_   W3RD<span class="blinking-cursor"></span></span>
+</div>
+<div class="flex items-center space-x-3">
+<img alt="A pixelated avatar of a person" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbw8YHscP2UTmy2hJfaQKK46VkgdbwLgGIbUsC-ghGZinhsUDiRSt207AbxbA_q3V8kisy8R595yn7WMifnwGwSxAjMayQPi3s5NZ0l2TKje0G5jSiZXDWW6-0QvMac4HyumTcSribCSl8nn6V0bkEuA7ldFpw5mPPlYoX21VP07-68e5nZlJqeBhD8uIS8PutOtR_Ay6A0Ut9LE9G8mCgTqUFabOQHJ1V3c5j-4otl3tBeeyBOO4M2gwUy9lXO3NxcptBjmuLzH0"/>
+<button class="text-3xl text-primary p-1">
+<span class="material-icons-outlined">menu</span>
+</button>
+</div>
+</header>
+<main>
+<div class="border border-border rounded p-4 mb-4 relative">
+<span class="absolute -top-3 left-2 bg-background px-1 text-primary">[media]</span>
+<div class="aspect-video bg-black rounded flex items-center justify-center p-4">
+<pre class="text-primary text-xs sm:text-sm md:text-base whitespace-pre overflow-hidden"> __      __      ___.                        
+/  \    /  \ ____\_ |__ _____    ____  ______
+\   \/\/   // __ \| __ \\__  \  /    \ \____ \
+ \        /\  ___/| \_\ \/ __ \|   |  \|  |_&gt; &gt;
+  \__/\  /  \___  &gt;___  (____  /___|  /|   __/ 
+       \/       \/    \/     \/     \/ |__|    
+                    </pre>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div class="border border-border rounded p-4 relative">
+<h2 class="absolute -top-3 left-2 bg-background px-1 text-primary text-xl">[0]~author</h2>
+<div class="mt-4">
+<p>&gt; name: w3rd</p>
+<p>&gt; projects: <a class="underline" href="#">github.com/w3rd</a></p>
+</div>
+</div>
+<div class="border border-border rounded p-4 relative">
+<h2 class="absolute -top-3 left-2 bg-background px-1 text-primary text-xl">[1]~links</h2>
+<div class="mt-4">
+<p>&gt; blog</p>
+<p>&gt; about</p>
+</div>
+</div>
+</div>
+<article class="border border-border rounded p-4 mb-4 relative">
+<span class="absolute -top-3 left-2 bg-background px-1 text-primary">[article]</span>
+<h1 class="text-3xl mb-2">My First Post: Embracing the Terminal Aesthetic</h1>
+<p class="mb-4 text-primary/70">posted_on: 2024-07-21</p>
+<p class="mb-4">
+                    Welcome to my little corner of the web. This blog is an experiment, a digital canvas where I explore themes of technology, design, and nostalgia. The aesthetic is intentional, a throwback to the command-line interfaces of old. There's a certain beauty in the simplicity of a VT320 terminal, a focus on content over chrome.
+                </p>
+<p class="mb-4">
+                    In a world of bloated JavaScript frameworks and complex UI libraries, there's something refreshing about returning to basics. Text, layout, and a single, striking color. It forces you to think about what's truly important. For me, that's clarity and speed.
+                </p>
+<pre class="bg-black/20 text-primary/90 p-4 my-4 overflow-x-auto rounded"><span class="text-primary/50"># A sample code block</span>
+function greet(name) {
+  console.log(`Hello, ${name}! Welcome to the terminal.`);
+}
+greet('w3rd');
+<span class="text-primary/50">// Output: Hello, w3rd! Welcome to the terminal.</span>
+</pre>
+<p>
+                    This is just the beginning. I plan to write about everything from shell scripting and system administration to frontend development and UI/UX design, all through this retro lens. Stick around, and let's see what we can build together.
+                </p>
+<p class="mt-4">&gt; end of file.</p>
+</article>
+<div class="border border-border rounded p-4 relative">
+<h2 class="absolute -top-3 left-2 bg-background px-1 text-primary text-xl">[apply]</h2>
+<form class="flex flex-col md:flex-row gap-4 mt-4">
+<div class="flex-grow">
+<label class="block" for="name">name:</label>
+<div class="flex items-center">
+<span>&gt;</span>
+<input class="bg-transparent border-0 focus:ring-0 w-full text-current placeholder-primary/50" id="name" name="name" type="text"/>
+</div>
+</div>
+<div class="flex-grow">
+<label class="block" for="email">email:</label>
+<div class="flex items-center">
+<span>&gt;</span>
+<input class="bg-transparent border-0 focus:ring-0 w-full text-current placeholder-primary/50" id="email" name="email" type="email"/>
+</div>
+</div>
+<button class="bg-primary text-background self-end px-4 py-1 border border-primary rounded" type="submit">
+                        submit
+                    </button>
+</form>
+</div>
+</main>
+<footer class="text-left mt-4 text-primary/50">
+<p>(c) 2024 W3RD. All rights reserved.</p>
+</footer>
+</div>
+
+</body></html>
