@@ -3,209 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal Chic UI Mockup</title>
-    <!-- Load Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use a Monospace Font for the Terminal Look --><link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Index</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Define the custom font */
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
         body {
             font-family: 'Fira Code', monospace;
         }
-
-        /* --- Custom Scrollbar Styling (Match Terminal Aesthetic) --- */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 8px; /* Width of the entire scrollbar */
-            height: 8px; /* Height for horizontal scrollbars */
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
         }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #111C18; /* Dark track background */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background-color: #549E6A; /* Selected border color for the thumb */
-            border-radius: 4px; /* Rounded corners for the thumb */
-            border: 2px solid #111C18; /* Padding around thumb */
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background-color: #83b692; /* Lighter on hover */
-        }
-
-        /* Custom styling for the panel header (font over border) */
-        .panel-header-style {
-            position: absolute;
-            top: -0.75rem;
-            left: 1rem;
-            padding: 0 0.5rem;
-            background-color: #111C18;
-            line-height: 1;
-        }
-        
-        /* Custom styling for text over border in bottom right */
-        .panel-footer-style {
-            position: absolute;
-            bottom: -0.75rem;
-            right: 1rem;
-            padding: 0 0.5rem;
-            background-color: #111C18;
-            line-height: 1;
-        }
-
-        /* Bottom Left Footer Style (for selection/command info) */
-        .panel-footer-left-style {
-            position: absolute;
-            bottom: -0.75rem;
-            left: 1rem;
-            padding: 0 0.5rem;
-            background-color: #111C18;
-            line-height: 1;
-        }
-
-        /* Ensure content doesn't collide with the bottom footer */
-        .panel-content {
-            height: calc(100% - 4px); /* Account for small top/bottom padding */
-            padding-bottom: 0.5rem; /* Ensure content above bottom border */
-        }
-
     </style>
-    <script>
-        // JIT Configuration for Custom Colors
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        't-bg': '#111C18',     /* Exact background from reference image */
-                        't-primary-border': '#C1C497', /* Border of other sections */
-                        't-selected-border': '#549E6A', /* Border of selected section */
-                        't-text-subtle': '#577B84', /* Muted text for secondary info */
-                        't-text-primary': '#B1C7AF', /* General text color for readability */
-                        't-code-comment': '#5D7C66', /* Darker green for comments/subtle code */
-                        't-code-keyword': '#C1C497', /* Keyword color */
-                        't-code-string': '#9C8861', /* String color */
-                        't-code-tag': '#C1C497', /* HTML tag color */
-                    },
-                }
-            }
-        }
-    </script>
 </head>
-<body class="bg-t-bg min-h-screen text-t-text-primary antialiased p-4">
-
-    <!-- Status Bar Component (Header Box Restored) -->
-    <header class="flex justify-between items-center text-xs px-4 py-2 bg-t-bg border border-t-primary-border rounded-md mb-4">
-        <!-- Minimal Content: Just placeholders for the top-level info, matching the structural box -->
-        <div class="text-t-text-subtle">
-            File: current_app.js
+<body class="bg-gray-900 text-green-400 min-h-screen p-4 md:p-10 selection:bg-green-900 selection:text-green-100">
+    <div class="max-w-4xl mx-auto border border-gray-700 rounded-lg overflow-hidden shadow-2xl bg-gray-900">
+        <!-- Terminal Header -->
+        <div class="bg-gray-800 px-4 py-2 flex items-center gap-2 border-b border-gray-700">
+            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <div class="ml-4 text-gray-400 text-xs">user@style: ~/Code/style</div>
         </div>
-        <div class="text-t-primary-border">
-            [MODIFIED]
-        </div>
-        <div class="text-t-text-subtle">
-            v3.2.1
-        </div>
-    </header>
-
-    <main class="grid grid-cols-1 md:grid-cols-3 gap-4 h-[calc(100vh-80px)]">
-
-        <!-- Left Sidebar / File Tree -->
-        <div class="col-span-1 space-y-4">
-
-            <!-- Panel 1: Status Panel (Selected) -->
-            <div class="relative p-2 border border-t-selected-border rounded-md bg-t-bg h-1/2">
-                <h3 class="panel-header-style text-t-selected-border text-sm font-normal uppercase tracking-wide">
-                    | [<span class="text-t-selected-border font-bold">1</span>]-status |
-                </h3>
-                <div class="space-y-1 pt-2 text-xs panel-content">
-                    <!-- Adjusted selected item, thin left border, subtle green text -->
-                    <p class="text-t-selected-border border-l border-t-selected-border pl-1 -ml-1 pr-1 cursor-pointer">
-                        <span class="text-t-text-subtle pr-1"></span> - media = main
-                    </p>
-                    <p class="text-t-text-primary hover:bg-white/5 pl-1 pr-1 cursor-pointer">
-                        <span class="text-t-text-subtle pr-1"></span> - Worktrees = Submodules
-                    </p>
-                    <p class="text-t-text-primary hover:bg-white/5 pl-1 pr-1 cursor-pointer">
-                        <span class="text-t-text-subtle pr-1"></span> - bin = bash
-                    </p>
-                </div>
-                <!-- Text over border in bottom right, adjusted color -->
-                <p class="panel-footer-style text-t-selected-border text-xs">
-                    0 of 8
-                </p>
+        
+        <!-- Terminal Content -->
+        <div class="p-6">
+            <div class="mb-4">
+                <span class="text-green-500">➜</span> <span class="text-blue-400">~</span> <span class="text-gray-400">ls -1 *.html</span>
             </div>
 
-            <!-- Panel 2: Files Panel -->
-            <div class="relative p-2 border border-t-primary-border rounded-md bg-t-bg h-[calc(50%-1rem)]">
-                <h3 class="panel-header-style text-t-primary-border text-sm font-normal uppercase tracking-wide">
-                    | [<span class="text-t-primary-border font-bold">2</span>]-Files - Worktrees - Submodules |
-                </h3>
-                <div class="space-y-1 pt-2 text-xs overflow-y-auto h-full panel-content custom-scrollbar">
-                    <p class="text-t-text-primary">No Changed files</p>
-                    <p class="text-t-code-comment">You can hide/focus this panel by pressing 'Q'</p>
-                    <p class="text-t-code-comment">Random tip: you can page through the items of a panel using ',' and '.'</p>
-                    <p class="text-t-code-comment"></p>
-                    <p class="text-t-code-comment">0 of 0</p>
-                </div>
-                <!-- Bottom right footer -->
-                <p class="panel-footer-style text-t-primary-border text-xs">
-                    Command Log
-                </p>
+            <div class="grid gap-2 pl-4 mb-4">
+                <a href="animated.html" class="block hover:bg-gray-800 hover:text-green-300 transition-colors px-2 py-1 rounded">
+                    <span class="text-gray-500 mr-2">-rw-r--r--</span> animated.html
+                </a>
+                <a href="closer.html" class="block hover:bg-gray-800 hover:text-green-300 transition-colors px-2 py-1 rounded">
+                    <span class="text-gray-500 mr-2">-rw-r--r--</span> closer.html
+                </a>
+                <a href="draft.html" class="block hover:bg-gray-800 hover:text-green-300 transition-colors px-2 py-1 rounded">
+                    <span class="text-gray-500 mr-2">-rw-r--r--</span> draft.html
+                </a>
+                <a href="fitscreen.html" class="block hover:bg-gray-800 hover:text-green-300 transition-colors px-2 py-1 rounded">
+                    <span class="text-gray-500 mr-2">-rw-r--r--</span> fitscreen.html
+                </a>
+            </div>
+
+            <div>
+                <span class="text-green-500">➜</span> <span class="text-blue-400">~</span> <span class="cursor-blink bg-gray-500 w-2 h-5 inline-block align-middle ml-1"></span>
             </div>
         </div>
-
-        <!-- Main Content Area / Code Editor -->
-        <div class="col-span-1 md:col-span-2 space-y-4">
-             <!-- Top-right panel -->
-             <div class="relative p-2 border border-t-primary-border rounded-md bg-t-bg h-1/2">
-                <h3 class="panel-header-style text-t-primary-border text-sm font-normal uppercase tracking-wide">
-                    | [<span class="text-t-primary-border font-bold">3</span>]-local branches - Remotes - Tags |
-                </h3>
-                <pre class="text-xs overflow-auto h-full pt-2 panel-content custom-scrollbar">
-                    <code class="text-t-text-primary">
-                        <span class="text-t-code-keyword">main</span> /
-                        <br><br>
-                    </code>
-                </pre>
-                <p class="panel-footer-style text-t-primary-border text-xs">
-                    1 of 1
-                </p>
-            </div>
-
-            <!-- Bottom-right panel (Commits) -->
-            <div class="relative p-2 border border-t-primary-border rounded-md bg-t-bg h-[calc(50%-1rem)]">
-                <h3 class="panel-header-style text-t-primary-border text-sm font-normal uppercase tracking-wide">
-                    | [<span class="text-t-primary-border font-bold">4</span>]-Commits - On_Repo |
-                </h3>
-                <pre class="text-xs overflow-y-auto h-full pt-2 leading-tight panel-content custom-scrollbar">
-                    <code class="text-t-text-primary">
-                        <span class="text-t-code-keyword">02/10/47</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">v12.1.2</span> Update changelog
-                        <br><span class="text-t-code-keyword">b3406aB</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">Q</span> Bump dependencies
-                        <br><span class="text-t-code-keyword">f29f0f0</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">Q</span> Bump dependencies
-                        <br><span class="text-t-code-keyword">72f61E4</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">Q</span> Bump dependencies
-                        <br><span class="text-t-code-keyword">1d7b1aD</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">Q</span> Bump dependencies
-                        <br><span class="text-t-code-keyword">3cA7390</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">Q</span> Update robots.txt single db tenancy dependency
-                        <br><span class="text-t-code-keyword">36e135D</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">G-</span> Merge pull request #74 from drearoberts/dependabot/github
-                        <br><span class="text-t-code-keyword">b3950b8</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">U</span> Use 'laravel/ui' git-auto-commit-action from 6 to 7
-                        <br><span class="text-t-code-keyword">df2a6aD</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">U</span> Update robots.txt dependency
-                        <br><span class="text-t-code-keyword">72907A0</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">Q-</span> Bump dependencies
-                        <br><span class="text-t-code-keyword">f7c90b0</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">Q</span> Revert migration refactor
-                        <br><span class="text-t-code-keyword">dbc09d0</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">Q</span> Refactor operations with foreign keys
-                        <br><span class="text-t-code-keyword">d7c86aB</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">Q</span> Fix styling
-                        <br><span class="text-t-code-keyword">d6bc423</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">Q</span> Scope delete to only tenancy superadmin
-                        <br><span class="text-t-code-keyword">0e13B07</span> <span class="text-t-text-subtle">OR</span> <span class="text-t-code-keyword">Q</span> Require laravel single database multi-tenancy
-                    </code>
-                </pre>
-                <!-- Bottom left command text -->
-                <p class="panel-footer-left-style text-t-primary-border text-xs">
-                    Select: <span class="text-t-text-subtle">$\uparrow\downarrow$</span>
-                </p>
-                <!-- Bottom right footer -->
-                <p class="panel-footer-style text-t-primary-border text-xs">
-                    1 of 300
-                </p>
-            </div>
-        </div>
-    </main>
-
+    </div>
 </body>
 </html>
