@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W3RD - Terminal Blog</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    
+    <!-- Google Fonts: VT323 for the terminal look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#32CD32", // Lime Green
+                        background: "#1E1E1E", // Dark Background
+                        border: "#D2B48C", // Tan color
+                    },
+                    fontFamily: {
+                        display: ["VT323", "monospace"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- Custom CSS for specific terminal effects -->
+    <style>
+        body {
+            font-family: 'VT323', monospace;
+            background-color: #1E1E1E;
+            color: #32CD32;
+            /* Custom scrollbar for Webkit */
+            &::-webkit-scrollbar {
+                width: 12px;
+            }
+            &::-webkit-scrollbar-track {
+                background: #1E1E1E; 
+            }
+            &::-webkit-scrollbar-thumb {
+                background: #D2B48C; 
+                border: 2px solid #1E1E1E;
+                border-radius: 4px;
+            }
+        }
+
+        /* Blinking cursor animation */
+        .blinking-cursor::after {
+            content: '█';
+            animation: blink 1s step-end infinite;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Selection styling */
+        ::selection {
+            background: #32CD32;
+            color: #1E1E1E;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto space-y-6">
+
+        <!-- Header -->
+        <header class="relative border border-border p-4 rounded flex justify-between items-center">
+            <span class="absolute -top-3 left-3 bg-background px-2 text-border">[header]</span>
+            
+            <div class="flex items-center">
+                <span class="text-2xl md:text-3xl blinking-cursor">&gt;_ W3RD</span>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <img src="https://picsum.photos/id/64/100/100" alt="Avatar" class="w-10 h-10 rounded-full grayscale hover:grayscale-0 transition-all border border-primary">
+                <button class="text-primary hover:text-white transition-colors">
+                    <span class="material-icons-outlined text-3xl">menu</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Media / ASCII Art -->
+        <section class="relative border border-border p-4 rounded">
+            <span class="absolute -top-3 left-3 bg-background px-2 text-border">[media]</span>
+            <div class="w-full overflow-x-auto flex justify-center items-center py-6 bg-black/20 rounded">
+<pre class="text-xs md:text-sm leading-none text-primary font-bold whitespace-pre">
+   __      __      ___.                        
+  /  \    /  \ ____\_ |__ _____    ____  ______
+  \   \/\/   // __ \| __ \\__  \  /    \ \____ \
+   \        /\  ___/| \_\ \/ __ \|   |  \|  |_> >
+    \__/\  /  \___  >___  (____  /___|  /|   __/ 
+         \/       \/    \/     \/     \/ |__|    
+</pre>
+            </div>
+        </section>
+
+        <!-- Info Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Author -->
+            <div class="relative border border-border p-5 rounded">
+                <span class="absolute -top-3 left-3 bg-background px-2 text-border">[0]~author</span>
+                <ul class="space-y-2 text-lg">
+                    <li><span class="text-border">&gt;</span> name: w3rd</li>
+                    <li><span class="text-border">&gt;</span> projects: <a href="#" class="underline hover:text-white">github.com/w3rd</a></li>
+                </ul>
+            </div>
+
+            <!-- Links -->
+            <div class="relative border border-border p-5 rounded">
+                <span class="absolute -top-3 left-3 bg-background px-2 text-border">[1]~links</span>
+                <ul class="space-y-2 text-lg">
+                    <li><span class="text-border">&gt;</span> <a href="#" class="hover:text-white hover:underline">blog</a></li>
+                    <li><span class="text-border">&gt;</span> <a href="#" class="hover:text-white hover:underline">about</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Article -->
+        <article class="relative border border-border p-6 rounded">
+            <span class="absolute -top-3 left-3 bg-background px-2 text-border">[article]</span>
+            
+            <header class="mb-6">
+                <h1 class="text-3xl md:text-4xl mb-2 text-white">My First Post: Embracing the Terminal Aesthetic</h1>
+                <div class="text-border text-sm">posted_on: 2024-07-21</div>
+            </header>
+
+            <div class="prose prose-invert prose-p:text-primary prose-headings:text-primary prose-a:text-border max-w-none text-lg">
+                <p>
+                    Welcome to my little corner of the web. This blog is an experiment, a digital canvas where I explore themes of technology, design, and nostalgia. The aesthetic is intentional, a throwback to the command-line interfaces of old. There's a certain beauty in the simplicity of a VT320 terminal, a focus on content over chrome.
+                </p>
+                <p>
+                    In a world of bloated JavaScript frameworks and complex UI libraries, there's something refreshing about returning to basics. Text, layout, and a single, striking color. It forces you to think about what's truly important. For me, that's clarity and speed.
+                </p>
+
+                <!-- Code Block -->
+                <div class="bg-black/40 border-l-4 border-border p-4 my-6 rounded font-mono text-sm md:text-base overflow-x-auto">
+                    <code class="block whitespace-pre">
+<span class="text-gray-500"># A sample code block</span>
+<span class="text-purple-400">function</span> <span class="text-blue-400">greet</span>(name) {
+  console.<span class="text-yellow-400">log</span>(`Hello, ${name}! Welcome to the terminal.`);
+}
+
+greet(<span class="text-green-200">'w3rd'</span>);
+<span class="text-gray-500">// Output: Hello, w3rd! Welcome to the terminal.</span>
+                    </code>
+                </div>
+
+                <p>
+                    This is just the beginning. I plan to write about everything from shell scripting and system administration to frontend development and UI/UX design, all through this retro lens. Stick around, and let's see what we can build together.
+                </p>
+            </div>
+
+            <div class="mt-8 text-border animate-pulse">
+                &gt; end of file.
+            </div>
+        </article>
+
+        <!-- Apply Form -->
+        <section class="relative border border-border p-6 rounded">
+            <span class="absolute -top-3 left-3 bg-background px-2 text-border">[apply]</span>
+            
+            <form class="flex flex-col md:flex-row gap-4 items-end mt-2" onsubmit="event.preventDefault(); alert('Command sent!');">
+                <div class="w-full">
+                    <label for="name" class="block text-border mb-1">name:</label>
+                    <div class="flex items-center border-b border-primary/30 focus-within:border-primary">
+                        <span class="mr-2 text-border">&gt;</span>
+                        <input type="text" id="name" class="w-full bg-transparent border-none focus:ring-0 p-0 text-primary placeholder-primary/30" placeholder="enter_name">
+                    </div>
+                </div>
+
+                <div class="w-full">
+                    <label for="email" class="block text-border mb-1">email:</label>
+                    <div class="flex items-center border-b border-primary/30 focus-within:border-primary">
+                        <span class="mr-2 text-border">&gt;</span>
+                        <input type="email" id="email" class="w-full bg-transparent border-none focus:ring-0 p-0 text-primary placeholder-primary/30" placeholder="enter_email">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full md:w-auto px-6 py-2 bg-primary text-background font-bold hover:bg-border transition-colors uppercase tracking-wider rounded-sm">
+                    submit
+                </button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-border/60 text-sm py-4">
+            (c) 2024 W3RD. All rights reserved. :: <span class="hover:text-primary cursor-pointer">System Status: Online</span>
+        </footer>
+
+    </div>
+
+</body>
+</html>
