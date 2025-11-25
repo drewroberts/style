@@ -9,3 +9,7 @@ View the index page for links to concepts of elements that I might like.
 ## Functionality
 
 For the o just  tll function, I want the menu to have a concept of the element's top so that if it is a solid bar it scrolls it down corrently & if it is a split box then it appropriately handles it. If there is a title to the block, it should convert it to just a straight line cause there may be embeddeded images, etc.
+
+## Width
+
+Max with of 768 pixels Tailwind md for the border of the sections & center on page. Add spacing when go down to the sm of 640px or less for mobile devices.
