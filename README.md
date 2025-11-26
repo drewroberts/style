@@ -36,3 +36,24 @@ This will allow a ultiple number of themes that will be defaulted per site & sav
 - ristretto
 - rose-pine
 - tokyo-night
+
+## Theme Usage with Tailwind CSS
+
+This application utilizes **12 distinct themes** managed by **CSS Custom Properties (CSS variables)** and the `data-theme` attribute on the `<html>` element. Instead of defining variables like --color-red-500, variables are defined based on their purpose in the application (semantic naming). This ensuress utility classes remain consistent across all themes.
+
+### **How it Works:**
+
+1.  **Semantic Variables:** Tailwind CSS is configured to use semantic variable names (e.g., `primary`, `base-100`), which map directly to CSS custom properties (e.g., `--color-primary`).
+2.  **Theme Definition:** Each theme's color values are defined within a dedicated CSS selector, such as `[data-theme='dark']` or `[data-theme='ocean-blue']`, overriding the default values.
+3.  **Activation:** Themes are switched dynamically at runtime by changing the `data-theme` attribute on the root `<html>` tag using JavaScript.
+
+### **Example:**
+
+To apply a theme, set the attribute:
+
+```javascript
+document.documentElement.setAttribute('data-theme', 'ocean-blue');
+```
+
+The app's utility classes (e.g., `bg-primary`, `text-base-content`) will automatically reflect the selected theme's colors.
+
