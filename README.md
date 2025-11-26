@@ -39,7 +39,7 @@ This will allow a ultiple number of themes that will be defaulted per site & sav
 
 ## Theme Usage with Tailwind CSS
 
-This application utilizes **12 distinct themes** managed by **CSS Custom Properties (CSS variables)** and the `data-theme` attribute on the `<html>` element. Instead of defining variables like --color-red-500, variables are defined based on their purpose in the application (semantic naming). This ensuress utility classes remain consistent across all themes.
+This application utilizes **18 distinct themes** managed by **CSS Custom Properties (CSS variables)** and the `data-theme` attribute on the `<html>` element. Instead of defining variables like --color-red-500, variables are defined based on their purpose in the application (semantic naming). This ensuress utility classes remain consistent across all themes.
 
 ### **How it Works:**
 
